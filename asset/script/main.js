@@ -61,9 +61,8 @@ play.addEventListener('click',
 
             // Al click si colora di azzurro o rosso se è una bomba
             boxN.addEventListener('click', function () { clickBox(arrayBombe, this)});
-
-
         }
+
 
     }
     // L'evento al click avviene una sola volta
@@ -116,11 +115,16 @@ function arrayBomb(numCelle) {
 
 //Funzione che determina il comportamento di un click su un Box
 function clickBox(arrayBombe, object) {
-    console.log(object);
+    console.log(object)
     if (arrayBombe.includes(parseInt(object.innerText))) {
         object.classList.add('bomb');
     } else {
         object.classList.add('click');
     }
+
+}
+
+//Funzione che termina il gioco
+function endGame(){
 
 }

@@ -43,6 +43,10 @@ play.addEventListener('click',
         // Invoco la funzione che stampa 16 numeri casuali tra 1 e il num di celle
         let arrayBombe = arrayBomb(numCelle);
 
+        //Contatore
+        let contatore = 0;
+
+
         // Mando in stampa tutti i box al click
         for (let i = 0; i < numCelle; i++) {
 
@@ -55,20 +59,9 @@ play.addEventListener('click',
             // Appendo il nuovo box
             grid.appendChild(boxN);
 
-            // Al click si colora di azzurro o rossa se è una bomba
-            boxN.addEventListener('click',
+            // Al click si colora di azzurro o rosso se è una bomba
+            boxN.addEventListener('click', function () { clickBox(arrayBombe, this)});
 
-                function () {
-
-                    if (arrayBombe.includes(parseInt(this.innerText))) {
-                        boxN.classList.add('bomb');
-                    } else {
-                        boxN.classList.add('click');
-                    }
-
-                }
-
-            );
 
         }
 
@@ -122,3 +115,12 @@ function arrayBomb(numCelle) {
 }
 
 //Funzione che determina il comportamento di un click su un Box
+function clickBox(arrayBombe, object) {
+    console.log(object);
+    if (arrayBombe.includes(parseInt(object.innerText))) {
+        object.classList.add('bomb');
+    } else {
+        object.classList.add('click');
+    }
+
+}

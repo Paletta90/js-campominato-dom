@@ -1,0 +1,33 @@
+@media screen and (max-width: 371px){
+
+    /* Scompare il testo "Difficile" */
+    #text{
+        display: none;
+    }
+
+}
+@media screen and (max-width: 742px){
+    #grid{
+        width: 70%;
+    }
+    /* Scompare il titolo */
+    #title{
+        display: none;
+    }
+    select{
+        width: auto;
+    }
+    button{
+        width: auto;
+    }
+}
+@media screen and (min-width: 742px) and (max-width: 992px){
+    #grid{
+        width: 50%;
+    }
+}
+@media screen and (min-width: 993px){
+    #grid{
+        width: 30%;
+    }
+}

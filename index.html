@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link css -->
+    <link rel="stylesheet" href="./asset/css/style.css">
+    <link rel="stylesheet" href="./asset/css/utility.css">
+    <link rel="stylesheet" href="./asset/css/mediaQuery.css">
+
+    <title>Campo minato</title>
+</head>
+
+<body>
+
+    
+    <header>
+
+        <!-- Contenitore centrato all'80% -->
+        <div class="cont-80 d-flex justify-spacebetween align-center">
+
+            <!-- Logo e titolo -->
+            <div class="d-flex align-center">
+
+                <img id="logo" class="mr-10" src="./asset/img/Logo.png" alt="Logo Boolean">
+                <h2 id="title">Campo Minato</h2>
+
+            </div>
+
+            <!-- Selector e button -->
+            <div class="d-flex">
+
+                <div id="text" class="mr-5">Difficoltà:</div>
+
+                <!-- Select -->
+                <select class="mr-5" name="" id="level">
+                    <option value="1">Easy</option>
+                    <option value="2">Normal</option>
+                    <option value="3">Difficult</option>
+                </select>
+
+                <!-- Button -->
+                <button class="mr-5" id="play">Play</button>
+
+                <!-- Button ricarica -->
+                <button id="reload">Reload</button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main>
+        <div class="d-flex justify-center align-center w-100">
+            <div id="grid" class="d-flex flex-wrap aspect-ratio">
+               
+            </div>
+        </div>
+    </main>
+
+    <footer>
+
+        <!-- Contenitore centrato all'80% -->
+        <div class="cont-80 d-flex  align-center">
+            <div>Made with &#10084; by <a href="#">Boolean</a></div>
+        </div>
+
+    </footer>
+
+
+
+    <script src="./asset/script/main.js"></script>
+</body>
+
+</html>

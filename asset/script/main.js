@@ -54,14 +54,54 @@ play.addEventListener('click',
             let boxN = document.createElement("div");
             // Aggiungo classe "box"
             boxN.classList.add("box");
+            //Aggiungo un id
+            boxN.setAttribute('id', `box${i + 1}`)
             // Numero tutti i box
             boxN.innerText = `${array[i]}`;
             // Appendo il nuovo box
             grid.appendChild(boxN);
 
             // Al click si colora di azzurro o rosso se è una bomba
-            boxN.addEventListener('click', function () { clickBox(arrayBombe, this)});
+            boxN.addEventListener('click', clickBox);
         }
+
+        //Funzione che determina il comportamento di un click su un Box
+        function clickBox() {
+
+            //Se il box contiene una bomba allora lo faccio diventare rosso
+            if (arrayBombe.includes(parseInt(this.innerText))) {
+
+                this.classList.add('bomb');
+                endGame();
+
+            } else {
+                this.classList.add('click');
+            }
+
+        }
+
+        //Funzione fine gioco
+        function endGame() {
+
+            //Tolgo l'evento al click a tutti i box e coloro tutte le bombe
+            for (let x = 0; x < numCelle; x++) {
+
+                // Riprendo tutti i box
+                let box = document.getElementById(`box${x + 1}`);
+
+                box.removeEventListener('click', clickBox);
+
+                // Coloro tutte le bombe di rosso
+                if(arrayBombe.includes( parseInt(box.innerText) ) ){
+                    box.classList.add('bomb');
+                }
+            }
+        }
+
+
+
+
+
 
 
     }
@@ -111,20 +151,4 @@ function arrayBomb(numCelle) {
     }
 
     return arrayBombe;
-}
-
-//Funzione che determina il comportamento di un click su un Box
-function clickBox(arrayBombe, object) {
-    console.log(object)
-    if (arrayBombe.includes(parseInt(object.innerText))) {
-        object.classList.add('bomb');
-    } else {
-        object.classList.add('click');
-    }
-
-}
-
-//Funzione che termina il gioco
-function endGame(){
-
 }

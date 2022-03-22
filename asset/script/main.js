@@ -44,7 +44,7 @@ play.addEventListener('click',
         let arrayBombe = arrayBomb(numCelle);
 
         //Contatore
-        let contatore = 0;
+        var contatore = 0;
 
 
         // Mando in stampa tutti i box al click
@@ -76,11 +76,19 @@ play.addEventListener('click',
 
             } else {
                 this.classList.add('click');
+                contatore++;
+                
+                // Se trovo 5 caselle azzurre ho vinto
+                if (contatore == 3) {
+                    document.getElementById('hai-vinto').innerHTML = "Hai vinto!";
+                    endGame();
+                }
             }
 
         }
 
         //Funzione fine gioco
+        //Funzione per rimuove tutti gli eventi al click dei box
         function endGame() {
 
             //Tolgo l'evento al click a tutti i box e coloro tutte le bombe
@@ -92,7 +100,7 @@ play.addEventListener('click',
                 box.removeEventListener('click', clickBox);
 
                 // Coloro tutte le bombe di rosso
-                if(arrayBombe.includes( parseInt(box.innerText) ) ){
+                if (arrayBombe.includes(parseInt(box.innerText))) {
                     box.classList.add('bomb');
                 }
             }

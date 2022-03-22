@@ -2,6 +2,7 @@
 :root{
     --bg-main: #7fffd4;
     --bg-click: #6495ed;
+    --bg-bomb: red;
     --text-bold: 1000;
     --text-big: 30px;
     --celle-num: 0;
@@ -56,5 +57,5 @@
     background-color: var(--bg-click);
 }
 .bomb{
-    background-color: red;
+    background-color: var(--bg-bomb);
 }

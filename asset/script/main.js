@@ -37,33 +37,11 @@ play.addEventListener('click',
 
         }
 
-        // Metodo per stampare da 1 a numCell numeri casuali
-        let array = [];
+        // Invoco la funzione che mi stampa X numeri casuali
+        let array = arrayRandomNum1toX(numCelle);
 
-        for (y = 1; y <= numCelle; y++) {
-            array.push(y);
-        }
-
-        function shuffle(array) {
-            return array.sort( () => Math.random() - 0.5 );
-        }
-        array = shuffle(array);
-
-        //Creo le varie Bombe
-        let arrayBombe = [];
-
-        for(z = 0; z < 16; z++){
-
-            let numRandom =  Math.floor( ( Math.random() * numCelle ) + 1);
-            if(arrayBombe.includes(numRandom)){
-                z--;
-            }else{
-                arrayBombe.push(numRandom);
-            } 
-
-        }
-        console.log(arrayBombe);
-
+        // Invoco la funzione che stampa 16 numeri casuali tra 1 e il num di celle
+        let arrayBombe = arrayBomb(numCelle);
 
         // Mando in stampa tutti i box al click
         for (let i = 0; i < numCelle; i++) {
@@ -80,14 +58,14 @@ play.addEventListener('click',
             // Al click si colora di azzurro o rossa se è una bomba
             boxN.addEventListener('click',
 
-                function(){
+                function () {
 
-                    if(arrayBombe.includes(parseInt(this.innerText))){
+                    if (arrayBombe.includes(parseInt(this.innerText))) {
                         boxN.classList.add('bomb');
-                    }else{
+                    } else {
                         boxN.classList.add('click');
                     }
-                    
+
                 }
 
             );
@@ -103,3 +81,44 @@ play.addEventListener('click',
 
 // Evento al click ricarica la pagina
 reload.addEventListener('click', () => location.reload());
+
+
+
+//FUNCTION
+
+// Funzione per stampare da 1 a numCell numeri casuali
+function arrayRandomNum1toX(numCelle) {
+    let array = [];
+
+    for (y = 1; y <= numCelle; y++) {
+        array.push(y);
+    }
+
+    function shuffle(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
+    return array = shuffle(array);
+}
+
+//Funzione che stampa 16 num casuali tra 1 e X
+function arrayBomb(numCelle) {
+
+    let arrayBombe = [];
+
+    for (z = 0; z < 16; z++) {
+
+        let numRandom = Math.floor((Math.random() * numCelle) + 1);
+
+        // Se il num random è già presente con z-- faccio ripeter il ciclo un ulteriore volta
+        if (arrayBombe.includes(numRandom)) {
+            z--;
+        } else {
+            arrayBombe.push(numRandom);
+        }
+
+    }
+
+    return arrayBombe;
+}
+
+//Funzione che determina il comportamento di un click su un Box

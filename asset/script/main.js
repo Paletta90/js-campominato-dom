@@ -46,6 +46,10 @@ play.addEventListener('click',
         //Contatore
         var contatore = 0;
 
+        //Variabile per mandare in stampa il risultato finale
+        let risultato = document.getElementById('risultato');
+        // Variabile per mandare in stampa punteggio e risultato finale
+        let punteggio = document.getElementById('punteggio');
 
         // Mando in stampa tutti i box al click
         for (let i = 0; i < numCelle; i++) {
@@ -73,14 +77,15 @@ play.addEventListener('click',
 
                 this.classList.add('bomb');
                 endGame();
+                risultato.innerHTML += "Hai Perso!"
 
             } else {
                 this.classList.add('click');
                 contatore++;
-                
+                punteggio.innerHTML = `Punteggio: ${contatore}`;
                 // Se trovo 5 caselle azzurre ho vinto
                 if (contatore == 3) {
-                    document.getElementById('hai-vinto').innerHTML = "Hai vinto!";
+                    risultato.innerHTML += "Hai vinto!";
                     endGame();
                 }
             }

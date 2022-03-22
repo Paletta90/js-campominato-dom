@@ -18,9 +18,6 @@ footer{
 }
 
 /* Caratteristiche tag*/
-h1{
-    text-align: center;
-}
 h2{
     font-weight: var(--text-bold);
     font-size: var(--text-big);

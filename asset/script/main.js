@@ -75,25 +75,32 @@ play.addEventListener('click',
             //Se il box contiene una bomba allora lo faccio diventare rosso
             if (arrayBombe.includes(parseInt(this.innerText))) {
 
-                this.classList.add('bomb');
                 endGame();
                 risultato.innerHTML += "Hai Perso!"
 
             } else {
+
                 this.classList.add('click');
+
+                // Rimuovo effetto al click sul box selezionato
+                this.removeEventListener('click', clickBox);
+                
+                // Aumento il contatore ogni volta che clicco su un box azzurro
                 contatore++;
                 punteggio.innerHTML = `Punteggio: ${contatore}`;
-                // Se trovo 5 caselle azzurre ho vinto
+
+                // Se trovo 3 caselle azzurre ho vinto
                 if (contatore == 3) {
                     risultato.innerHTML += "Hai vinto!";
                     endGame();
                 }
+
             }
 
         }
 
         //Funzione fine gioco
-        //Funzione per rimuove tutti gli eventi al click dei box
+        //Funzione per rimuove tutti gli eventi al click dei box e colorare tutte le bombe di rosso
         function endGame() {
 
             //Tolgo l'evento al click a tutti i box e coloro tutte le bombe
@@ -102,6 +109,7 @@ play.addEventListener('click',
                 // Riprendo tutti i box
                 let box = document.getElementById(`box${x + 1}`);
 
+                // Rimuovo il click
                 box.removeEventListener('click', clickBox);
 
                 // Coloro tutte le bombe di rosso
@@ -110,11 +118,6 @@ play.addEventListener('click',
                 }
             }
         }
-
-
-
-
-
 
 
     }
